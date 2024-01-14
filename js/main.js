@@ -12,12 +12,13 @@
       rowIncrement = 1,
       hintIncrement = 1,
       pegs = {
-        1: 'green',
-        2: 'purple',
-        3: 'red',
-        4: 'yellow',
-        5: 'blue',
-        6: 'brown'
+        1: 'white',
+        2: 'green',
+        3: 'yellow',
+        4: 'orange',
+        5: 'red',
+        6: 'purple',
+        7: 'blue'
       };
 
   function gameSetup () {
@@ -39,7 +40,7 @@
 
     guess.push(+(self.value));
 
-    if (guess.length === 4) {
+    if (guess.length === 5) {
       if (compare())
         gameState('won');
       else
@@ -108,7 +109,7 @@
     // Clear the guess sockets
     for (var i = 0; i < inputRows.length; i++) {
       inputRows[i].innerHTML = '';
-      for (var j = 0; j < 4; j++) {
+      for (var j = 0; j < 5; j++) {
         var socket = document.createElement('div');
         socket.className = 'socket';
         inputRows[i].appendChild(socket);
@@ -118,7 +119,7 @@
     // Clear the hint sockets
     for (var i = 0; i < hintContainer.length; i++) {
       var socketCollection = hintContainer[i].getElementsByClassName('socket');
-      for (var j = 0; j < 4; j++) {
+      for (var j = 0; j < 5; j++) {
         socketCollection[j].className = 'js-hint-socket socket';
       }
     }
@@ -134,7 +135,7 @@
 
   // Creates a color sequence that the player needs to guess
   function generateSecretCode (min, max) {
-    for (var i = 0; i < 4; i++)
+    for (var i = 0; i < 5; i++)
       code[i] = Math.floor(Math.random() * (max - min)) + min;
   }
 
